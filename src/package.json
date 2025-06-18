@@ -1,0 +1,68 @@
+{
+  "name": "hazard-detection-software",
+  "version": "1.2.0",
+  "description": "隐患排查教育软件 - 桌面版",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "build-win32": "electron-builder --win --ia32",
+    "build-win64": "electron-builder --win --x64",
+    "dist": "npm run build-win64"
+  },
+  "keywords": [
+    "safety",
+    "education",
+    "hazard-detection",
+    "training"
+  ],
+  "author": "南京两木峰安全科技有限公司",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.liangmufeng.hazard-detection",
+    "productName": "隐患排查教育软件",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules",
+      "!src",
+      "!.git",
+      "!.gitignore",
+      "!README.md",
+      "!package-lock.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64", "ia32"]
+        }
+      ],
+      "icon": "icon.ico",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerLanguages": ["zh_CN"],
+      "language": "2052",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "隐患排查教育软件"
+    },
+    "portable": {
+      "artifactName": "隐患排查教育软件-${version}-portable.exe"
+    }
+  }
+} 
